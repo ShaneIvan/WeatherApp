@@ -7,7 +7,7 @@ import Highlights from './components/Highlights.vue';
 import Coords from './components/Coords.vue';
 import Humidity from './components/Humidity.vue';
 
-const city = ref('Paris')
+const city = ref('Manila')
 const weatherInfo = ref(null)
 const isError = computed(() => weatherInfo.value?.cod !== 200)
 
@@ -54,8 +54,19 @@ onMounted(getWeather)
 
 <template>
   <div class="page">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="navbar-brand">WeatherApp</a>
+        <ul class="navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/settings">Settings</a></li>
 
-    
+        </ul>
+      </div>
+    </nav>
+
+    <video :src="videoSource" autoplay loop muted playsinline class="video-background"></video>
 
     <main class="main">
       <div class="container">
@@ -92,16 +103,59 @@ onMounted(getWeather)
   </div>
 </template>
 
-<!-- <style lang="scss" scoped>
+<style lang="scss" scoped>
 @import './assets/styles/main.scss';
 
-.page {
-  position: relative;
+.navbar {
+  position: fixed; // Fixes the navbar at the top
+  top: 0; // Ensures it's at the very top of the viewport
+  left: 0; // Aligns to the left edge
+  right: 0; // Stretches it to the right edge
+  width: 100%; // Ensures full width
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  z-index: 1000; // Ensures it stays above other content
+}
+
+.navbar-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px 0;
+  padding: 0 20px;
+  max-width: 1200px; // Limits the max width of the content
+  margin: 0 auto; // Centers the content within the navbar
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-left: 20px;
+
+    a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #aaa;
+      }
+    }
+  }
+}
+
+.page {
+  padding-top: 60px; // Adds top padding to make space for the fixed navbar
 }
 
 .video-background {
@@ -113,6 +167,7 @@ onMounted(getWeather)
   object-fit: cover;
   z-index: -1;
 }
+
 
 .laptop {
   width: 100%;
@@ -223,4 +278,4 @@ onMounted(getWeather)
     padding-top: 10px;
     font-size: 12px;
   }
-}</style> -->
+}</style>
