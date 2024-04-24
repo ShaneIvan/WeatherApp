@@ -2,7 +2,6 @@
 
 </script>
 
-<!-- Added This Week -->
 <template>
   <div id="app">
     <router-view></router-view>
@@ -18,15 +17,11 @@
         </ul>
       </div>
     </nav>
-<!-- /Added This Week -->
 
   </div>
   </div>
   
 </template>
-
-
-<!-- Added This Week -->
 
 
 <style scoped>

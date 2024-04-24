@@ -97,3 +97,52 @@ a {
 .pic-coords {
   background-image: url("/src/assets/img/compass.png");
 }
+
+
+:root {
+  
+  //main button
+  --button-background: #f0f0f0;
+  --button-text: #333;
+  --button-hover-background: #e0e0e0;
+  --button-hover-text: #111;
+
+  //light
+  --background-color-light: #fff;
+  --text-color-light: #333;
+  --button-background-light: #f0f0f0;
+  --button-text-light: #333;
+  --button-hover-background-light: #e0e0e0;
+  --button-hover-text-light: #111;
+  
+  //dark
+  --background-color-dark: #121212;
+  --text-color-dark: #f1f1f1;
+  --button-background-dark: #555;
+  --button-text-dark: #fff;
+  --button-hover-background-dark: #666;
+  --button-hover-text-dark: #ddd;
+
+  //adaptive
+
+}
+
+[data-theme="light"] {
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+  --button-hover-background: var(--button-hover-background-light);
+  --button-hover-text: var(--button-hover-text-light);
+}
+
+[data-theme="dark"] {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+  --button-hover-background: var(--button-hover-background-dark);
+  --button-hover-text: var(--button-hover-text-dark);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s; //background transition
+}

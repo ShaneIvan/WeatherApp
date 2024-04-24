@@ -29,23 +29,11 @@ const getWeather = async () => {
 onMounted(getWeather)
 </script>
 
-<!-- Added This Week -->
 <template>
   <div id="app">
     <router-view></router-view>
     <div class="page">
-    <nav class="navbar">
-      <div class="navbar-container">
-        <a href="/" class="navbar-brand">WeatherApp</a>
-        <ul class="navbar-nav">
-          <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/faqs">FAQs</router-link></li>
-          <li><router-link to="/settings">Settings</router-link></li>
-
-        </ul>
-      </div>
-    </nav>
-<!-- /Added This Week -->
+    
 
     <main class="main">
       <div class="container">
@@ -85,7 +73,6 @@ onMounted(getWeather)
 </template>
 
 
-<!-- Added This Week -->
 
 
 <style lang="scss" scoped>
@@ -218,4 +205,3 @@ onMounted(getWeather)
 }</style>
 
 
-<!-- /Added This Week -->
