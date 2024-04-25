@@ -1,26 +1,34 @@
 <script setup>
 import { useTheme } from '../themeProvider';
+import { watch } from 'vue';
 
 const { theme, setTheme } = useTheme();
 
-const toggleTheme = () => {
-  const newTheme = theme.value === 'light' ? 'dark' : 'light';
-  setTheme(newTheme);
-  localStorage.setItem('theme', newTheme);
+const themeOptions = ['light', 'dark', 'adaptive'];
+
+const toggleTheme = (selectedTheme) => {
+  setTheme(selectedTheme);
 };
+
+watch(theme, (newVal, oldVal) => {
+  console.log(`Theme changed from ${oldVal} to ${newVal}`);
+});
 </script>
 
 <template>
   <div class="settings-container">
     <h1>Settings</h1>
     <div class="theme-switcher">
-      <label for="theme-toggle-button" class="button-label">Switch modes:</label>
-      <button id="theme-toggle-button" @click="toggleTheme">
-        Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
-      </button>
+      <label class="button-label" for="theme-select">Theme Mode:</label>
+      <select id="theme-select" :value="theme" @change="toggleTheme($event.target.value)">
+        <option v-for="option in themeOptions" :key="option" :value="option">
+          {{ option.charAt(0).toUpperCase() + option.slice(1) }}
+        </option>
+      </select>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .settings-container {
@@ -39,10 +47,10 @@ const toggleTheme = () => {
   margin-right: 10px;
 }
 
-#theme-toggle-button {
+#theme-select {
   background-color: var(--button-background);
   color: var(--button-text);
-  border: none;
+  border: 1px solid #ccc;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
@@ -51,11 +59,8 @@ const toggleTheme = () => {
   transition: background-color 0.3s, color 0.3s;
 }
 
-#theme-toggle-button:hover {
+#theme-select:hover {
   background-color: var(--button-hover-background);
   color: var(--button-hover-text);
 }
 </style>
-
-
-

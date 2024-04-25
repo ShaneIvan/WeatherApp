@@ -8,7 +8,13 @@ export function useTheme() {
         document.documentElement.setAttribute('data-theme', newTheme);
     };
 
+    
+    setTheme(theme.value);
+
     return {
+
+        
+
         theme: readonly(theme),
         setTheme
     };

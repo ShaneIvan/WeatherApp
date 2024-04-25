@@ -124,6 +124,12 @@ a {
   --button-hover-text-dark: #ddd;
 
   //adaptive
+  --background-color-adaptive: #8a4242;
+  --text-color-adaptive: #912b2b;
+  --button-background-adaptive: #b83333;
+  --button-text-adaptive: #cf2828;
+  --button-hover-background-adaptive: #e95555;
+  --button-hover-text-adaptive: #b93c3c;
 
 }
 
@@ -139,6 +145,13 @@ a {
   --text-color: var(--text-color-dark);
   --button-hover-background: var(--button-hover-background-dark);
   --button-hover-text: var(--button-hover-text-dark);
+}
+
+[data-theme="adaptive"] {
+  --background-color: var(--background-color-adaptive);
+  --text-color: var(--text-color-adaptive);
+  --button-hover-background: var(--button-hover-background-adaptive);
+  --button-hover-text: var(--button-hover-text-adaptive);
 }
 
 body {

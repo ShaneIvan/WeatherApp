@@ -26,6 +26,29 @@ const getWeather = async () => {
   }
 };
 
+const setVideoBackground = (weatherCondition) => {
+
+  weatherCondition = weatherCondition.toLowerCase();
+
+  if (weatherCondition === 'clear') {
+    videoSource.value = './videos/clear sky.mp4';
+  } else if (weatherCondition === 'clouds') {
+    videoSource.value = './videos/clouds.mp4';
+  } else if (weatherCondition === 'rain') {
+    videoSource.value = './videos/rain.mp4';
+  } else if (weatherCondition === 'snow') {
+    videoSource.value = './videos/snow.mp4';
+  } else if (weatherCondition === 'mist' || 'smoke' || 'haze' || 'dust' || 'fog' || 'sand' || 'ash' || 'squall' || 'tornado') {
+    videoSource.value = './videos/trees.mp4';
+  } else if (weatherCondition === 'thunderstorm') {
+    videoSource.value = './videos/thunderstorm.mp4';
+  } else if (weatherCondition === 'drizzle') {
+    videoSource.value = './videos/drizzle.mp4';
+  } else {
+    videoSource.value = './videos/sky.mp4';
+  }
+};
+
 onMounted(getWeather)
 </script>
 
@@ -33,43 +56,44 @@ onMounted(getWeather)
   <div id="app">
     <router-view></router-view>
     <div class="page">
-    
 
-    <main class="main">
-      <div class="container">
-        <div class="laptop">
-          <div class="sections">
-            <section :class="['section', 'section-left', { 'section-error': isError }]">
-              <div class="info">
-                <div class="city-inner">
-                  <input v-model="city" type="text" class="search" @keyup.enter="getWeather">
-                </div>
-                <WeatherSummary v-if="!isError" :weatherInfo="weatherInfo" />
-                <div v-else class="error">
-                  <div class="error-title">
-                    Oops! Something went wrong
+      <video :src="videoSource" autoplay loop muted playsinline class="video-background"></video>
+      
+      <main class="main">
+        <div class="container">
+          <div class="laptop">
+            <div class="sections">
+              <section :class="['section', 'section-left', { 'section-error': isError }]">
+                <div class="info">
+                  <div class="city-inner">
+                    <input v-model="city" type="text" class="search" @keyup.enter="getWeather">
                   </div>
-                  <div v-if="weatherInfo?.message" class="error-message">
-                    {{ capitalizeFirstLetter(weatherInfo?.message) }}
+                  <WeatherSummary v-if="!isError" :weatherInfo="weatherInfo" />
+                  <div v-else class="error">
+                    <div class="error-title">
+                      Oops! Something went wrong
+                    </div>
+                    <div v-if="weatherInfo?.message" class="error-message">
+                      {{ capitalizeFirstLetter(weatherInfo?.message) }}
+                    </div>
                   </div>
-                </div>
 
-              </div>
-            </section>
-            <section v-if="!isError" class="section section-right">
-              <Highlights :weatherInfo="weatherInfo" />
-            </section>
-          </div>
-          <div v-if="!isError" class="sections">
-            <Coords :coord="weatherInfo.coord" />
-            <Humidity :humidity="weatherInfo.main.humidity" />
+                </div>
+              </section>
+              <section v-if="!isError" class="section section-right">
+                <Highlights :weatherInfo="weatherInfo" />
+              </section>
+            </div>
+            <div v-if="!isError" class="sections">
+              <Coords :coord="weatherInfo.coord" />
+              <Humidity :humidity="weatherInfo.main.humidity" />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
-  </div>
-  
+
 </template>
 
 
@@ -202,6 +226,5 @@ onMounted(getWeather)
     padding-top: 10px;
     font-size: 12px;
   }
-}</style>
-
-
+}
+</style>
