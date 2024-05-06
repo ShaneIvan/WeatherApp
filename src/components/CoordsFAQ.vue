@@ -1,12 +1,3 @@
-<script setup>
-const props = defineProps({
-    coord: {
-        type: Object,
-        required: true
-    }
-})
-</script>
-
 <template>
     <section class="section-bottom right">
         <div class="block-bottom">
@@ -15,15 +6,20 @@ const props = defineProps({
                 <div class="block-bottom-texts">
                     <div class="block-bottom-text-block">
                         <div class="block-bottom-text-block-title">
-                            Longitude: {{ coord?.lon }}
+                            What is Longitude?
                         </div>
-                    
+                        <div class="block-bottom-text-block-desc">
+                            Longitude measures distance east or west of the prime meridian.
+                        </div>
                     </div>
                     <div class="block-bottom-text-block">
                         <div class="block-bottom-text-block-title">
-                            Latitude: {{ coord?.lat }}
+                            What is Latitude
                         </div>
-                        
+                        <div class="block-bottom-text-block-desc">
+                            Latitude lines start at the equator (0 degrees latitude) and run east and
+                            west, parallel to the equator.
+                        </div>
                     </div>
                 </div>
             </div>
