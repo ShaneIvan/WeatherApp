@@ -1,11 +1,13 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, inject } from 'vue';
 import { API_KEY, BASE_URL } from '../constants/index'
 import { capitalizeFirstLetter } from '../utils'
 import WeatherSummary from '../components/WeatherSummary.vue';
 import Highlights from '../components/Highlights.vue';
 import Coords from '../components/Coords.vue';
 import Humidity from '../components/Humidity.vue';
+
+const globalSettings = inject('globalColor');
 
 const city = ref('Manila')
 const weatherInfo = ref(null)
@@ -64,29 +66,34 @@ onMounted(getWeather)
           <div class="laptop">
             <div class="sections">
               <section :class="['section', 'section-left', { 'section-error': isError }]">
-                <div class="info">
-                  <div class="city-inner">
-                    <input v-model="city" type="text" class="search" @keyup.enter="getWeather">
-                  </div>
-                  <WeatherSummary v-if="!isError" :weatherInfo="weatherInfo" />
-                  <div v-else class="error">
-                    <div class="error-title">
-                      Oops! Something went wrong
+                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                  <div class="info">
+                    <div class="city-inner">
+                      <input v-model="city" type="text" class="search" @keyup.enter="getWeather">
                     </div>
-                    <div v-if="weatherInfo?.message" class="error-message">
-                      {{ capitalizeFirstLetter(weatherInfo?.message) }}
+                    <WeatherSummary v-if="!isError" :weatherInfo="weatherInfo" />
+                    <div v-else class="error">
+                      <div class="error-title">
+                        Oops! Something went wrong
+                      </div>
+                      <div v-if="weatherInfo?.message" class="error-message">
+                        {{ capitalizeFirstLetter(weatherInfo?.message) }}
+                      </div>
                     </div>
                   </div>
-
                 </div>
               </section>
               <section v-if="!isError" class="section section-right">
-                <Highlights :weatherInfo="weatherInfo" />
+                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                  <Highlights :weatherInfo="weatherInfo" />
+                </div>
               </section>
             </div>
             <div v-if="!isError" class="sections">
-              <Coords :coord="weatherInfo.coord" />
-              <Humidity :humidity="weatherInfo.main.humidity" />
+              <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                <Coords :coord="weatherInfo.coord" />
+                <Humidity :humidity="weatherInfo.main.humidity" />
+              </div>
             </div>
           </div>
         </div>
@@ -96,11 +103,7 @@ onMounted(getWeather)
 
 </template>
 
-
-
-
 <style lang="scss" scoped>
 @import '../assets/styles/main.scss';
-
 
 </style>

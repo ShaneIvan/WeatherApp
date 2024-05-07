@@ -54,7 +54,6 @@
       margin-top: 16px;
       padding-left: 0;
     }
-  
   }
   
   .city-inner {
@@ -76,7 +75,15 @@
     }
   }
   
-  .info {
+  .light-mode .info {
+    height: 100%;
+    padding: 16px;
+    background-color: white;
+    background-size: cover;
+    border-radius: 25px;
+  }
+
+  .dark-mode .info {
     height: 100%;
     padding: 16px;
     background: url('../assets/img/gradient-1.jpg') no-repeat 50% 50%;

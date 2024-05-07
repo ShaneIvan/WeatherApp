@@ -1,5 +1,8 @@
 <script setup>
 import { capitalizeFirstLetter } from '../utils'
+import { inject } from 'vue'
+
+const globalSettings = inject('globalColor');
 
 const props = defineProps({
   weatherInfo: {
@@ -16,20 +19,29 @@ const today = new Date().toLocaleString('en-EN', { weekday: 'short', year: 'nume
     <div :style="`background-image: url('./weather-main/${weatherInfo?.weather[0].description}.png');`" class="pic-main">
     </div>
     <div class="weather">
-      <div class="temp">
-        {{ Math.round(weatherInfo?.main?.temp) }} °C
+      <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+        <div class="temp">
+          {{ Math.round(weatherInfo?.main?.temp) }} °C
+        </div>
       </div>
-      <div class="weather-desc text-block">
-        {{ capitalizeFirstLetter(weatherInfo?.weather[0].description) }}
+      
+      <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+        <div class="weather-desc text-block">
+          {{ capitalizeFirstLetter(weatherInfo?.weather[0].description) }}
+        </div>
+      </div>      
+    </div>
+
+    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+      <div class="city text-block">
+        {{ weatherInfo?.name }},
+        {{ weatherInfo?.sys?.country }}
+      </div>
+      <div class="date text-block">
+        {{ today }}
       </div>
     </div>
-    <div class="city text-block">
-      {{ weatherInfo?.name }},
-      {{ weatherInfo?.sys?.country }}
-    </div>
-    <div class="date text-block">
-      {{ today }}
-    </div>
+    
   </div>
 </template>
 
@@ -58,7 +70,6 @@ const today = new Date().toLocaleString('en-EN', { weekday: 'short', year: 'nume
 .temp {
   padding-bottom: 8px;
   font-size: 32px;
-
 }
 
 .text-block {
@@ -82,15 +93,15 @@ const today = new Date().toLocaleString('en-EN', { weekday: 'short', year: 'nume
 }
 
 .weather-desc {
-  &::before {
-    background-image: url('/src/assets/img/weather.svg');
-  }
+  // &::before {
+  //   background-image: url('/src/assets/img/weather.svg');
+  // }
 }
 
 .city {
-  &::before {
-    background-image: url('/src/assets/img/location.svg');
-  }
+  // &::before {
+  //   background-image: url('/src/assets/img/location.svg');
+  // }
 }
 
 .date {
@@ -98,7 +109,7 @@ const today = new Date().toLocaleString('en-EN', { weekday: 'short', year: 'nume
     left: 2px;
     width: 15px;
     height: 15px;
-    background-image: url('/src/assets/img/calendar.svg');
+    // background-image: url('/src/assets/img/calendar.svg');
   }
 }
 </style>

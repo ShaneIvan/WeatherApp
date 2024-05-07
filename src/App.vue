@@ -1,5 +1,8 @@
 <script setup>
+  import { ref, provide } from 'vue';
 
+  const globalSettings = ref("Light");
+  provide('globalColor', globalSettings);
 </script>
 
 <template>

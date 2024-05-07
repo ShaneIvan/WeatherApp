@@ -1,0 +1,142 @@
+
+
+
+/* WeatherSummary.vue */
+.light-mode .temp {
+    color: black;
+}
+.dark-mode .temp {
+    color: white;
+}
+
+.light-mode .weather-desc {
+    color: black;
+}
+.dark-mode .weather-desc {
+    color: white;
+}
+.light-mode .weather-desc::before {
+    background-image: url("/src/assets/img/weather_light.svg")
+}
+.dark-mode .weather-desc::before {
+    background-image: url("/src/assets/img/weather.svg")
+}
+
+.light-mode .date {
+    color: black;
+}
+.dark-mode .date {
+    color: white;
+}
+.light-mode .date::before {
+    background-image: url("/src/assets/img/sun_light.svg")
+}
+.dark-mode .date::before {
+    background-image: url("/src/assets/img/sun.svg")
+}
+
+.light-mode .city {
+    color: black;
+}
+.dark-mode .city {
+    color: white;
+}
+.light-mode .city::before {
+    background-image: url("/src/assets/img/weather_light.svg")
+}
+.dark-mode .city::before {
+    background-image: url("/src/assets/img/weather.svg")
+}
+
+
+/* Highlights.vue */
+
+
+.light-mode .title {
+    color: black;
+}
+.dark-mode .title {
+    color: white;
+}
+
+.light-mode .card-title {
+    color: black;
+}
+.dark-mode .card-title {
+    color: white;
+}
+
+.light-mode .info-main-num {
+    color: black;
+}
+.dark-mode .info-main-text {
+    color: white;
+}
+
+.light-mode .card {
+    color: black;
+}
+.dark-mode .card {
+    color: white;
+}
+
+.light-mode .card-small-text {
+    color: black;
+}
+.dark-mode .card-small-text {
+    color: white;
+}
+
+.light-mode .card-small-title {
+    color: black;
+}
+.dark-mode .card-small-title {
+    color: white;
+}
+
+.light-mode .block-bottom-texts {
+    color: black;
+}
+.dark-mode .block-bottom-texts {
+    color: white;
+}
+
+.light-mode .card-small {
+    color: black;
+}
+.dark-mode .card-small {
+    color: white;
+}
+
+
+.light-mode .state-title {
+    color: black;
+}
+.dark-mode .state-title {
+    color: white;
+}
+
+.light-mode .state-time {
+    color: black;
+}
+.dark-mode .state-time {
+    color: white;
+}
+
+/* Coords.vue */
+.light-mode .block-bottom-text-block {
+    color: black;
+}
+.dark-mode .block-bottom-text-block {
+    color: white;
+}
+
+/* Humidity.vue */
+.light-mode .block-bottom-text-block-title {
+    color: black;
+}
+.dark-mode .block-bottom-text-block-title {
+    color: white;
+}
+
+

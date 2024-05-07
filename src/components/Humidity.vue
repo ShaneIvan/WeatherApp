@@ -1,4 +1,7 @@
 <script setup>
+import { inject } from 'vue'
+const globalSettings = inject('globalColor');
+
 const props = defineProps({
     humidity: {
         type: Number,
@@ -14,8 +17,10 @@ const props = defineProps({
                 <div class="block-bottom-pic pic-humidity"></div>
                 <div class="block-bottom-texts">
                     <div class="block-bottom-text-block">
-                        <div class="block-bottom-text-block-title">
-                            Humidity: {{ humidity }} %
+                        <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                            <div class="block-bottom-text-block-title">
+                                Humidity: {{ humidity }} %
+                            </div>
                         </div>
                     </div>
                 </div>

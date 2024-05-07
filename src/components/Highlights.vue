@@ -1,6 +1,9 @@
 <script setup>
 import { computed } from 'vue';
 import { getPressureMm, getTime } from '../utils'
+import { inject } from 'vue'
+
+const globalSettings = inject('globalColor');
 
 const props = defineProps({
     weatherInfo: {
@@ -22,99 +25,138 @@ const sunsetTime = computed(() => {
 
 <template>
     <div class="section highlights">
-        <div class="title">
-            Today's Highlights
+        <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+            <div class="title">
+                Today's Highlights
+            </div>
         </div>
+        
         <div class="highlights-wrapper">
             <div class="highlight">
                 <div class="card">
-                    <div class="card-title">
-                        Wind
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-title">
+                            Wind
+                        </div>
                     </div>
+                    
                     <div class="card-pic card-pic--wind"></div>
                     <div class="card-info">
                         <div class="card-justify">
                             <div class="info-main">
-                                <div class="info-main-num">
-                                    {{ weatherInfo?.wind?.speed }}
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-num">
+                                        {{ weatherInfo?.wind?.speed }}
+                                    </div>
                                 </div>
-                                <div class="info-main-text">
-                                    m/s
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-text">
+                                        m/s
+                                    </div>
                                 </div>
+                                
                             </div>
                             <div class="info-main">
-                                <div class="info-main-num">
-                                    {{ weatherInfo?.wind?.deg }}
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-num">
+                                        {{ weatherInfo?.wind?.deg }}
+                                    </div>
                                 </div>
-                                <div class="info-main-text">
-                                    deg
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-text">
+                                        deg
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-small">
-                    <div class="card-small-title">
-                        Wind gusts
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-small-title">
+                            Wind gusts
+                        </div>
                     </div>
                     <div class="card-small-info">
                         <div v-if="weatherInfo?.wind?.gust" class="card-small-data">
-                            <div class="info-main-num">
-                                {{ Math.round(weatherInfo?.wind?.gust) }}
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-num">
+                                    {{ Math.round(weatherInfo?.wind?.gust) }}
+                                </div>
                             </div>
-                            <div class="info-main-text">
-                                m/s
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-text">
+                                    m/s
+                                </div>
                             </div>
                         </div>
                         <div class="card-small-hint">
                             <div class="card-small-pic card-small-pic--wind"></div>
-                            <div class="card-small-text text-egorova">
-                                Learn
-                                <a href="https://www.windy.com/articles/weather-phenomena-what-s-the-difference-between-sustained-winds-and-wind-gusts-10390?satellite,7.787,115.115,5"
-                                    target="_blank">more</a>
-                                about gusts
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="card-small-text text-egorova">
+                                    Learn
+                                    <a href="https://www.windy.com/articles/weather-phenomena-what-s-the-difference-between-sustained-winds-and-wind-gusts-10390?satellite,7.787,115.115,5"
+                                        target="_blank">more</a>
+                                    about gusts
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="highlight">
                 <div class="card">
-                    <div class="card-title">
-                        Pressure
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-title">
+                            Pressure
+                        </div>
                     </div>
                     <div class="card-pic card-pic--pressure"></div>
                     <div class="card-info">
                         <div class="card-centered">
                             <div class="info-main">
-                                <div class="info-main-num">
-                                    {{ getPressureMm(weatherInfo?.main?.pressure) }}
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-num">
+                                        {{ getPressureMm(weatherInfo?.main?.pressure) }}
+                                    </div>
                                 </div>
-                                <div class="info-main-text">
-                                    mm
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-text">
+                                        mm
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-small">
-                    <div class="card-small-title">
-                        Feels like
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-small-title">
+                            Feels like
+                        </div>
                     </div>
                     <div class="card-small-info">
                         <div class="card-small-data">
-                            <div class="info-main-num">
-                                {{ Math.round(weatherInfo?.main?.feels_like) }}
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-num">
+                                    {{ Math.round(weatherInfo?.main?.feels_like) }}
+                                </div>
                             </div>
-                            <div class="info-main-text">
-                                °C
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-text">
+                                    °C
+                                </div>
                             </div>
                         </div>
                         <div class="card-small-hint">
                             <div class="card-small-pic card-small-pic--margin card-small-pic--pressure">
                             </div>
-                            <div class="card-small-text">
-                                How hot or cold it really feels
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="card-small-text">
+                                    How hot or cold it really feels
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,50 +164,68 @@ const sunsetTime = computed(() => {
             </div>
             <div class="highlight">
                 <div class="card">
-                    <div class="card-title">
-                        Sunrise and sunset
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-title">
+                            Sunrise and sunset
+                        </div>
                     </div>
                     <div class="card-pic card-pic--sun"></div>
                     <div class="card-info">
                         <div class="states">
                             <div class="state">
                                 <div class="state-pic"></div>
-                                <div class="state-title">
-                                    Sunrise
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="state-title">
+                                        Sunrise
+                                    </div>
                                 </div>
-                                <div class="state-time">
-                                    {{ sunriseTime }}
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="state-time">
+                                        {{ sunriseTime }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="state">
                                 <div class="state-pic state-pic--flipped"></div>
-                                <div class="state-title">
-                                    Sunset
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="state-title">
+                                        Sunset
+                                    </div>
                                 </div>
-                                <div class="state-time">
-                                    {{ sunsetTime }}
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="state-time">
+                                        {{ sunsetTime }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-small">
-                    <div class="card-small-title">
-                        Cloudiness
+                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                        <div class="card-small-title">
+                            Cloudiness
+                        </div>
                     </div>
                     <div class="card-small-info">
                         <div class="card-small-data">
-                            <div class="info-main-num">
-                                {{ weatherInfo?.clouds?.all }}
-                            </div>
-                            <div class="info-main-text">
-                                %
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-num">
+                                    {{ weatherInfo?.clouds?.all }}
+                                </div>
+                                </div>
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="info-main-text">
+                                    %
+                                </div>
                             </div>
                         </div>
                         <div class="card-small-hint">
                             <div class="card-small-pic card-small-pic--sun"></div>
-                            <div class="card-small-text">
-                                The sky fraction obscured by clouds
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="card-small-text">
+                                    The sky fraction obscured by clouds
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -178,9 +238,24 @@ const sunsetTime = computed(() => {
 <style lang="scss" scoped>
 @import '../assets/styles/main.scss';
 
-.highlights {
+.light-mode .highlights {
     padding: 28px 16px 16px;
-    background: url('/src/assets/img/gradient-4.jpg') no-repeat 0% 0%;
+    background-color: white;
+    background-size: cover;
+    border-radius: 25px;
+
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 575px) {
+            flex-direction: column;
+        }
+    }
+}
+.dark-mode .highlights {
+    padding: 28px 16px 16px;
+    background: url('/src/assets/img/gradient-1.jpg') no-repeat 0% 0%;
     background-size: cover;
     border-radius: 25px;
 
@@ -328,7 +403,7 @@ const sunsetTime = computed(() => {
         padding-left: 2px;
         padding-bottom: 3px;
         font-size: 13px;
-        color: rgba($white, 0.75);
+        // color: rgba($white, 0.75);
 
         @media (max-width: 1199px) {
             padding-bottom: 1.5px;
@@ -411,7 +486,7 @@ const sunsetTime = computed(() => {
     &-text {
         font-size: 11px;
         line-height: 1.2;
-        color: rgba($white, 0.6);
+        // color: rgba($white, 0.6);
 
         @media (max-width: 1199px) {
             min-height: 22px;
