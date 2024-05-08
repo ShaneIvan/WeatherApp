@@ -201,30 +201,32 @@ const sunsetTime = computed(() => {
                         </div>
                     </div>
                 </div>
-                <div class="card-small">
-                    <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
-                        <div class="card-small-title">
-                            Cloudiness
-                        </div>
-                    </div>
-                    <div class="card-small-info">
-                        <div class="card-small-data">
-                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
-                                <div class="info-main-num">
-                                    {{ weatherInfo?.clouds?.all }}
-                                </div>
-                                </div>
-                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
-                                <div class="info-main-text">
-                                    %
-                                </div>
+                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                    <div class="card-small">
+                        <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                            <div class="card-small-title">
+                                Cloudiness
                             </div>
                         </div>
-                        <div class="card-small-hint">
-                            <div class="card-small-pic card-small-pic--sun"></div>
-                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
-                                <div class="card-small-text">
-                                    The sky fraction obscured by clouds
+                        <div class="card-small-info">
+                            <div class="card-small-data">
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-num">
+                                        {{ weatherInfo?.clouds?.all }}
+                                    </div>
+                                    </div>
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="info-main-text">
+                                        %
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-small-hint">
+                                <div class="card-small-pic card-small-pic--sun"></div>
+                                <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                    <div class="card-small-text">
+                                        The sky fraction obscured by clouds
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +242,8 @@ const sunsetTime = computed(() => {
 
 .light-mode .highlights {
     padding: 28px 16px 16px;
-    background-color: white;
+    // background-color: white;
+    background: url('../assets/img/white_gradient.jpg') no-repeat 50% 50%;
     background-size: cover;
     border-radius: 25px;
 
@@ -282,7 +285,64 @@ const sunsetTime = computed(() => {
     }
 }
 
-.card {
+.light-mode .card {
+    min-height: 230px;
+    padding: 16px;
+    // background: url('/src/assets/img/gradient-2.jpg') no-repeat 50% 50%;
+    background: url('../assets/img/dity_white.jpg') no-repeat 50% 50%;
+    background-size: cover;
+    border-radius: 8px;
+
+    @media (max-width: 1199px) {
+        padding: 12px;
+    }
+
+    &-centered {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    &-justify {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+
+    &-title {
+        padding-bottom: 12px;
+        font-size: 13px;
+
+        @media (max-width: 1199px) {
+            font-size: 12px;
+        }
+    }
+
+    &-pic {
+        width: 100%;
+        height: 90px;
+        margin-bottom: 16px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+
+        &--wind {
+        background-image: url('/src/assets/img/equalizer (2).png');
+    }
+
+    &--pressure {
+        background-image: url('/src/assets/img/barometer.png');
+    }
+
+    &--sun {
+        background-image: url('/src/assets/img/sun-moving.png');
+    }
+    }
+ 
+}
+
+.dark-mode .card {
     min-height: 230px;
     padding: 16px;
     background: url('/src/assets/img/gradient-2.jpg') no-repeat 50% 50%;
@@ -412,7 +472,91 @@ const sunsetTime = computed(() => {
     }
 }
 
-.card-small {
+.light-mode .card-small {
+    margin-top: 12px;
+    padding: 12px 16px;
+    // background: url('/src/assets/img/gradient-2.jpg') no-repeat 50% 50%;
+    background: url('../assets/img/dity_white.jpg') no-repeat 50% 50%;
+    background-size: cover;
+    border-radius: 8px;
+
+    &-title {
+        font-size: 13px;
+    }
+
+    &-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: 1199px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &-pic {
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+
+        @media (max-width: 1199px) {
+            display: none;
+        }
+
+        &--margin {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 3px;
+        }
+
+        &--wind {
+            background-image: url('/src/assets/img/gusts.svg');
+        }
+
+        &--pressure {
+            background-image: url('/src/assets/img/humidity.svg');
+        }
+
+        &--sun {
+            background-image: url('/src/assets/img/cloud.svg');
+        }
+    }
+
+    &-data {
+        display: flex;
+        align-items: flex-end;
+        width: 45%;
+
+        @media (max-width: 1199px) {
+            width: 100%;
+            padding-top: 8px;
+        }
+    }
+
+    &-hint {
+        width: 55%;
+
+        @media (max-width: 1199px) {
+            width: 100%;
+        }
+    }
+
+    &-text {
+        font-size: 11px;
+        line-height: 1.2;
+        // color: rgba($white, 0.6);
+
+        @media (max-width: 1199px) {
+            min-height: 22px;
+            font-size: 9px;
+        }
+    }
+}
+
+.dark-mode .card-small {
     margin-top: 12px;
     padding: 12px 16px;
     background: url('/src/assets/img/gradient-2.jpg') no-repeat 50% 50%;
