@@ -12,14 +12,16 @@ const props = defineProps({
 
 <template>
     <section class="section-bottom">
-        <div class="block-bottom">
-            <div class="block-bottom-inner">
-                <div class="block-bottom-pic pic-humidity"></div>
-                <div class="block-bottom-texts">
-                    <div class="block-bottom-text-block">
-                        <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
-                            <div class="block-bottom-text-block-title">
-                                Humidity: {{ humidity }} %
+        <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+            <div class="block-bottom">
+                <div class="block-bottom-inner">
+                    <div class="block-bottom-pic pic-humidity"></div>
+                    <div class="block-bottom-texts">
+                        <div class="block-bottom-text-block">
+                            <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
+                                <div class="block-bottom-text-block-title">
+                                    Humidity: {{ humidity }} %
+                                </div>
                             </div>
                         </div>
                     </div>

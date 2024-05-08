@@ -90,10 +90,8 @@ onMounted(getWeather)
               </section>
             </div>
             <div v-if="!isError" class="sections">
-              <div :class="{ 'light-mode': globalSettings === 'Light', 'dark-mode': globalSettings === 'Dark' }">
                 <Coords :coord="weatherInfo.coord" />
                 <Humidity :humidity="weatherInfo.main.humidity" />
-              </div>
             </div>
           </div>
         </div>
