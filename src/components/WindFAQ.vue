@@ -1,8 +1,6 @@
 <script setup>
 import { inject } from 'vue'
 const globalSettings = inject('globalColor');
-
-
 </script>
 
 <template>
