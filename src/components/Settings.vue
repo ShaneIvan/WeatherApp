@@ -7,7 +7,7 @@ const globalSettings = inject('globalColor');
 
 const { theme, setTheme } = useTheme();
 
-const themeOptions = ['light', 'dark', 'adaptive'];
+const themeOptions = ['light', 'dark'];
 
 const toggleTheme = (selectedTheme) => {
   setTheme(selectedTheme);
